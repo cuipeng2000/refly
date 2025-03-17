@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naval Ravikant's Philosophy | Wisdom for Modern Life</title>
+    <link href="https://cdn.staticfile.org/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.min.js"></script>
+    <style>
+        /* Custom CSS */
+        :root {
+            --primary-light: #1a5f7a;
+            --secondary-light: #159895;
+            --accent-light: #57c5b6;
+            --background-light: #f9f9f9;
+            --text-light: #333333;
+            --quote-bg-light: #f0f7fa;
+            
+            --primary-dark: #57c5b6;
+            --secondary-dark: #159895;
+            --accent-dark: #1a5f7a;
+            --background-dark: #121212;
+            --text-dark: #e0e0e0;
+            --quote-bg-dark: #1e2a38;
+        }
+        
+        .light {
+            --primary: var(--primary-light);
+            --secondary: var(--secondary-light);
+            --accent: var(--accent-light);
+            --background: var(--background-light);
+            --text: var(--text-light);
+            --quote-bg: var(--quote-bg-light);
+        }
+        
+        .dark {
+            --primary: var(--primary-dark);
+            --secondary: var(--secondary-dark);
+            --accent: var(--accent-dark);
+            --background: var(--background-dark);
+            --text: var(--text-dark);
+            --quote-bg: var(--quote-bg-dark);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .serif {
+            font-family: 'Lora', serif;
+        }
+        
+        .quote {
+            font-family: 'Lora', serif;
+            background-color: var(--quote-bg);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .drop-cap:first-letter {
+            font-family: 'Playfair Display', serif;
+            float: left;
+            font-size: 5rem;
+            line-height: 0.8;
+            padding-right: 0.1em;
+            color: var(--primary);
+        }
+        
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn {
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .theme-toggle {
+            cursor: pointer;
+        }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--background);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .concept-map {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% - 15px);
+            background-color: var(--primary);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-opacity-95 backdrop-filter backdrop-blur-sm" style="background-color: var(--background);">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="#" class="text-2xl font-bold" style="color: var(--primary);">
+                    <i class="fas fa-anchor mr-2"></i>Naval Wisdom
+                </a>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#philosophy" class="nav-link" style="color: var(--text);">Philosophy</a>
+                <a href="#wealth" class="nav-link" style="color: var(--text);">Wealth</a>
+                <a href="#happiness" class="nav-link" style="color: var(--text);">Happiness</a>
+                <a href="#concepts" class="nav-link" style="color: var(--text);">Key Concepts</a>
+                <a href="#reading" class="nav-link" style="color: var(--text);">Further Reading</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <div class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon text-xl hidden dark:inline-block" style="color: var(--text);"></i>
+                    <i class="fas fa-sun text-xl inline-block dark:hidden" style="color: var(--text);"></i>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="mobileMenuButton" class="text-xl" style="color: var(--text);">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden" style="background-color: var(--background);">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="#philosophy" class="py-2" style="color: var(--text);">Philosophy</a>
+                <a href="#wealth" class="py-2" style="color: var(--text);">Wealth</a>
+                <a href="#happiness" class="py-2" style="color: var(--text);">Happiness</a>
+                <a href="#concepts" class="py-2" style="color: var(--text);">Key Concepts</a>
+                <a href="#reading" class="py-2" style="color: var(--text);">Further Reading</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden" style="height: 80vh;">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80'); filter: brightness(0.5);">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-60"></div>
+        
+        <div class="container mx-auto px-4 h-full flex items-center relative z-10">
+            <div class="max-w-3xl fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">The Naval Ravikant Way</h1>
+                <p class="text-xl md:text-2xl text-gray-200 mb-8 serif">Exploring the timeless wisdom and philosophical insights of one of the most influential thinkers of our time.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#philosophy" class="btn px-6 py-3 rounded-lg font-medium text-white" style="background-color: var(--primary);">
+                        Explore Philosophy <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#concepts" class="btn px-6 py-3 rounded-lg font-medium border-2 text-white border-white hover:bg-white hover:text-gray-900">
+                        Key Concepts <i class="fas fa-lightbulb ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+        <!-- Introduction Section -->
+        <section class="max-w-4xl mx-auto mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--primary);">Who is Naval Ravikant?</h2>
+                <div class="w-24 h-1 mx-auto" style="background-color: var(--accent);"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+                <div class="md:col-span-1">
+                    <img src="https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=928&q=80" alt="Naval Ravikant" class="rounded-lg shadow-lg w-full">
+                </div>
+                
+                <div class="md:col-span-2">
+                    <p class="serif text-lg mb-6 drop-cap">Naval Ravikant is an entrepreneur, investor, and modern philosopher known for his insights on wealth creation, happiness, and personal development. As the co-founder of AngelList and an early investor in companies like Uber and Twitter, Naval has established himself as a visionary in the tech industry. However, his most profound impact comes from his philosophical approach to life, business, and happiness, which he shares through various platforms including Twitter, podcasts, and interviews.</p>
+                    
+                    <p class="serif text-lg mb-6">What sets Naval apart is his ability to distill complex ideas into simple, actionable wisdom. His thoughts on building wealth, finding happiness, and living a meaningful life have resonated with millions worldwide, earning him a reputation as the "philosopher of Silicon Valley."</p>
+                    
+                    <div class="quote p-6 rounded-lg italic text-lg">
+                        "I'm not really interested in having a career. I'm interested in having a bunch of hobbies that might make me money."
+                        <div class="mt-2 font-semibold text-right">— Naval Ravikant</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section id="philosophy" class="max-w-4xl mx-auto mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--primary);">Naval's Philosophy</h2>
+                <div class="w-24 h-1 mx-auto" style="background-color: var(--accent);"></div>
+            </div>
+            
+            <div class="serif text-lg space-y-6">
+                <p>Naval's philosophy is a unique blend of ancient wisdom and modern pragmatism. He draws from various philosophical traditions, including Stoicism, Buddhism, and Rationalism, while applying these principles to contemporary challenges in business, technology, and personal development.</p>
+                
+                <p>At the core of Naval's philosophy is the concept of <strong>personal leverage</strong> — the idea that individuals can create extraordinary value by developing specific knowledge, leveraging technology, and building judgment. This approach emphasizes long-term thinking, continuous learning, and the pursuit of genuine understanding rather than mere information accumulation.</p>
+                
+                <div class="quote p-6 rounded-lg italic text-lg">
+                    "The purpose of life is to learn, the purpose of learning is to understand, and the purpose of understanding is to become free."
+                    <div class="mt-2 font-semibold text-right">— Naval Ravikant</div>
+                </div>
+                
+                <p>Naval advocates for <strong>mental models</strong> as tools for better decision-making. By understanding fundamental principles across disciplines, one can develop a more accurate map of reality and make wiser choices. This interdisciplinary approach to knowledge is central to his thinking.</p>
+                
+                <p>Another key aspect of Naval's philosophy is the emphasis on <strong>internal validation</strong> rather than external approval. He suggests that true happiness comes from within, not from status, recognition, or material possessions. This perspective aligns with ancient philosophical traditions that emphasize self-knowledge and inner peace.</p>
+            </div>
+            
+            <div class="mt-12 grid md:grid-cols-3 gap-8">
+                <div class="card p-6 rounded-lg shadow-md" style="background-color: var(--quote-bg);">
+                    <div class="text-4xl mb-4" style="color: var(--primary);"><i class="fas fa-brain"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Mental Models</h3>
+                    <p class="serif">Frameworks for understanding reality and making better decisions across various domains of life.</p>
+                </div>
+                
+                <div class="card p-6 rounded-lg shadow-md" style="background-color: var(--quote-bg);">
+                    <div class="text-4xl mb-4" style="color: var(--primary);"><i class="fas fa-balance-scale"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Ethical Wealth Creation</h3>
+                    <p class="serif">Creating value for society while building personal wealth through leverage and specific knowledge.</p>
+                </div>
+                
+                <div class="card p-6 rounded-lg shadow-md" style="background-color: var(--quote-bg);">
+                    <div class="text-4xl mb-4" style="color: var(--primary);"><i class="fas fa-heart"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Internal Happiness</h3>
+                    <p class="serif">Finding contentment through acceptance, mindfulness, and freedom from societal expectations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wealth Section -->
+        <section id="wealth" class="max-w-4xl mx-auto mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--primary);">The Art of Wealth Creation</h2>
+                <div class="w-24 h-1 mx-auto" style="background-color: var(--accent);"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="serif text-lg space-y-6">
+                        <p>Naval's approach to wealth creation stands in stark contrast to conventional wisdom. Rather than focusing on saving, budgeting, or climbing corporate ladders, he emphasizes building assets that work while you sleep.</p>
+                        
+                        <p>The foundation of Naval's wealth philosophy is the concept of <strong>specific knowledge</strong> — expertise that cannot be trained for and is highly valuable in the marketplace. This knowledge, combined with accountability, leverage, and judgment, creates the conditions for generating extraordinary wealth.</p>
+                        
+                        <div class="quote p-6 rounded-lg italic text-lg">
+                            "Seek wealth, not money or status. Wealth is having assets that earn while you sleep. Money is how we transfer time and wealth. Status is your place in the social hierarchy."
+                            <div class="mt-2 font-semibold text-right">— Naval Ravikant</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="concept-map p-6 rounded-lg shadow-lg" style="background-color: var(--quote-bg);">
+                        <h3 class="text-xl font-bold mb-4 text-center">Naval's Wealth Framework</h3>
+                        <div class="mermaid">
+                            graph TD
+                                A[Wealth Creation] --> B[Specific Knowledge]
+                                A --> C[Accountability]
+                                A --> D[Leverage]
+                                A --> E[Judgment]
+                                
+                                B --> F[Cannot be trained for]
+                                B --> G[Highly valuable]
+                                B --> H[Unique to you]
+                                
+                                C --> I[Take business risks]
+                                C --> J[Build personal brand]
+                                
+                                D --> K[Labor]
+                                D --> L[Capital]
+                                D --> M[Technology/Code]
+                                D --> N[Media]
+                                
+                                E --> O[Long-term thinking]
+                                E --> P[Clear reasoning]
+                                
+                                style A fill:#1a5f7a,color:#ffffff
+                                style B fill:#159895,color:#ffffff
+                                style C fill:#159895,color:#ffffff
+                                style D fill:#159895,color:#ffffff
+                                style E fill:#159895,color:#ffffff
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12">
+                <h3 class="text-2xl font-bold mb-6" style="color: var(--secondary);">Key Principles of Wealth Creation</h3>
+                
+                <div class="space-y-8">
+                    <div class="timeline-item pl-8">
+                        <h4 class="text-xl font-bold mb-2">Seek Wealth, Not Money or Status</h4>
+                        <p class="serif">Wealth is having assets that earn while you sleep. It provides freedom, not just material possessions. Focus on creating systems that generate value without your constant input.</p>
+                    </div>
+                    
+                    <div class="timeline-item pl-8">
+                        <h4 class="text-xl font-bold mb-2">Find a Position of Leverage</h4>
+                        <p class="serif">In the modern economy, the most powerful forms of leverage are products with no marginal cost of replication (code and media). These allow you to scale your impact without scaling your time investment.</p>
+                    </div>
+                    
+                    <div class="timeline-item pl-8">
+                        <h4 class="text-xl font-bold mb-2">Play Long-term Games with Long-term People</h4>
+                        <p class="serif">Compounding relationships and reputation lead to compounding returns. Integrity, honesty, and long-term thinking are not just ethical choices but strategic advantages.</p>
+                    </div>
+                    
+                    <div class="timeline-item pl-8">
+                        <h4 class="text-xl font-bold mb-2">Learn to Sell, Learn to Build</h4>
+                        <p class="serif">If you can do both, you'll be unstoppable. Building creates the product; selling creates the desire. Both skills multiply your effectiveness.</p>
+                    </div>
+                    
+                    <div class="timeline-item pl-8">
+                        <h4 class="text-xl font-bold mb-2">Specific Knowledge is Key</h4>
+                        <p class="serif">Develop knowledge that cannot be trained for. Follow your genuine curiosity and passion rather than what is currently fashionable.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Happiness Section -->
+        <section id="happiness" class="max-w-4xl mx-auto mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--primary);">The Pursuit of Happiness</h2>
+                <div class="w-24 h-1 mx-auto" style="background-color: var(--accent);"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-5 gap-8 items-center mb-12">
+                <div class="md:col-span-3">
+                    <div class="serif text-lg space-y-6">
+                        <p>Naval's approach to happiness is both profound and practical. He views happiness not as a destination to be reached but as a skill to be developed through consistent practice and self-awareness.</p>
+                        
+                        <p>Central to his philosophy is the idea that happiness is our default state when we remove the causes of unhappiness. These causes often include desire, fear, and social comparison — mental patterns that can be observed and gradually released.</p>
+                        
+                        <div class="quote p-6 rounded-lg italic text-lg">
+                            "Happiness is a choice and a skill and you can dedicate yourself to learning that skill and making that choice."
+                            <div class="mt-2 font-semibold text-right">— Naval Ravikant</div>
+                        </div>
+                        
+                        <p>Naval emphasizes the importance of <strong>present-moment awareness</strong> and the practice of meditation as tools for cultivating happiness. By training the mind to observe thoughts without attachment, one can experience greater peace and contentment.</p>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-2">
+                    <div class="p-6 rounded-lg shadow-lg" style="background-color: var(--quote-bg);">
+                        <h3 class="text-xl font-bold mb-4 text-center">Happiness Equation</h3>
+                        <div class="text-center p-4 serif">
+                            <div class="text-2xl mb-4" style="color: var(--primary);">
+                                Happiness = <br>
+                                <div class="border-t-2 my-2" style="border-color: var(--primary);"></div>
+                                Reality − Expectations
+                            </div>
+                            <p class="mt-4">Naval suggests that happiness comes when reality meets or exceeds our expectations. By managing expectations and accepting reality as it is, we can increase our happiness.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card p-6 rounded-lg shadow-md" style="background-color: var(--quote-bg);">
+                    <div class="text-4xl mb-4" style="color: var(--primary);"><i class="fas fa-peace"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Meditation & Mindfulness</h3>
+                    <p class="serif">Regular meditation practice helps develop awareness of thoughts and emotions without being controlled by them.</p>
+                </div>
+                
+                <div class="card p-6 rounded-lg shadow-md" style="background-color: var(--quote-bg);">
+                    <div class="text-4xl mb-4" style="color: var(--primary);"><i class="fas fa-book-open"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Reading & Learning</h3>
+                    <p class="serif">Reading is a form of meditation that expands the mind and provides perspective on life's challenges.</p>
+                </div>
+                
+                <div class="card p-6 rounded-lg shadow-md" style="background-color: var(--quote-bg);">
+                    <div class="text-4xl mb-4" style="color: var(--primary);"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Acceptance</h3>
+                    <p class="serif">Learning to accept what cannot be changed while focusing energy on what can be influenced.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 p-8 rounded-lg" style="background-color: var(--quote-bg);">
+                <h3 class="text-2xl font-bold mb-6 text-center" style="color: var(--secondary);">Naval's Happiness Practices</h3>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <ul class="space-y-4 serif">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3" style="color: var(--primary);"></i>
+                                <span><strong>Morning Meditation:</strong> Starting the day with mindfulness practice to set a calm, centered tone.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3" style="color: var(--primary);"></i>
+                                <span><strong>Gratitude:</strong> Regularly acknowledging and appreciating what you have rather than focusing on what's missing.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3" style="color: var(--primary);"></i>
+                                <span><strong>Physical Exercise:</strong> Maintaining physical health as a foundation for mental well-being.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <ul class="space-y-4 serif">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3" style="color: var(--primary);"></i>
+                                <span><strong>Deep Reading:</strong> Engaging with profound ideas through books rather than consuming shallow content.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3" style="color: var(--primary);"></i>
+                                <span><strong>Nature Immersion:</strong> Spending time in natural settings to restore perspective and reduce stress.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3" style="color: var(--primary);"></i>
+                                <span><strong>Journaling:</strong> Writing to clarify thoughts, process emotions, and track personal growth.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Concepts Section -->
+        <section id="concepts" class="max-w-4xl mx-auto mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--primary);">Key Concepts & Mental Models</h2>
+                <div class="w-24 h-1 mx-auto" style="background-color: var(--accent);"></div>
+            </div>
+            
+            <div class="concept-map p-6 rounded-lg shadow-lg mb-12" style="background-color: var(--quote-bg);">
+                <h3 class="text-xl font-bold mb-4 text-center">Naval's Conceptual Framework</h3>
+                <div class="mermaid">
+                    mindmap
+                      root((Naval's<br>Philosophy))
+                        Wealth
+                          Specific Knowledge
+                          Accountability
+                          Leverage
+                            Labor
+                            Capital
+                            Code/Media
+                          Judgment
+                        Happiness
+                          Meditation
+                          Acceptance
+                          Present Awareness
+                          Desire Management
+                        Mental Models
+                          Inversion
+                          Probabilistic Thinking
+                          Evolution
+                          Game Theory
+                        Reading
+                          Foundational Books
+                          Reading for Understanding
+                          Re-reading Classics
+                        Decision Making
+                          Long-term Thinking
+                          Avoiding Mimetic Desires
+                          First Principles
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card p-6 rounded-lg shadow-md" style="background-color: var(--quote-bg);">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--primary);">Specific Knowledge</h3>
+                    <p class="serif mb-4">Knowledge that cannot be taught, is highly specialized, and cannot be outsourced or automated. It's often at the intersection of multiple disciplines and aligns with your unique talents and interests.</p>
+                    <div class="quote p-4 rounded-lg italic text-base">
+                        "Specific knowledge is knowledge you cannot be trained for. If society can train you, it can train someone else and replace you."
+                    </div>
+                </div>
+                
+                <div class="card p-6 rounded-lg shadow-md" style="background-color: var(--quote-bg);">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--primary);">Leverage</h3>
+                    <p class="serif mb-4">The ability to multiply your output without a corresponding increase in input. Modern forms of leverage include code, media, capital, and labor, with code and media being the most powerful as they have zero marginal cost of replication.</p>
+                    <div class="quote p-4 rounded-lg italic text-base">
+                        "Give me a lever long enough and I shall move the world."
+                    </div>
+                </div>
+                
+                <div class="card p-6 rounded-lg shadow-md" style="background-color: var(--quote-bg);">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--primary);">Permissionless Leverage</h3>
+                    <p class="serif mb-4">Forms of leverage that don't require anyone's approval to use. While labor and capital typically require permission, code and media are permissionless, making them more accessible and potentially more powerful.</p>
+                    <div class="quote p-4 rounded-lg italic text-base">
+                        "The most important skill for getting rich is becoming a perpetual learner."
+                    </div>
+                </div>
+                
+                <div class="card p-6 rounded-lg shadow-md" style="background-color: var(--quote-bg);">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--primary);">The Principal-Agent Problem</h3>
+                    <p class="serif mb-4">The conflict that arises when an agent (employee, manager) has different incentives than the principal (owner, shareholder). Understanding this problem is crucial for building effective organizations and making sound investment decisions.</p>
+                    <div class="quote p-4 rounded-lg italic text-base">
+                        "If you want to understand conflict in business, study the principal-agent problem."
+                    </div>
+                </div>
+                
+                <div class="card p-6 rounded-lg shadow-md" style="background-color: var(--quote-bg);">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--primary);">Long-term Games</h3>
+                    <p class="serif mb-4">The strategy of playing iterated games with positive-sum outcomes. By focusing on long-term relationships and reputation, you can build trust and create more value over time.</p>
+                    <div class="quote p-4 rounded-lg italic text-base">
+                        "Play iterated games. All returns in life come from compound interest in long-term games."
+                    </div>
+                </div>
+                
+                <div class="card p-6 rounded-lg shadow-md" style="background-color: var(--quote-bg);">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--primary);">Desire as a Contract</h3>
+                    <p class="serif mb-4">The idea that every desire is a contract you make with yourself to be unhappy until you get what you want. By being selective about desires and learning to let go of attachments, you can increase your baseline happiness.</p>
+                    <div class="quote p-4 rounded-lg italic text-base">
+                        "Desire is a contract that you make with yourself to be unhappy until you get what you want."
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Further Reading Section -->
+        <section id="reading" class="max-w-4xl mx-auto mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--primary);">Further Reading</h2>
+                <div class="w-24 h-1 mx-auto" style="background-color: var(--accent);"></div>
+            </div>
+            
+            <div class="serif text-lg mb-8">
+                <p>Naval is known for his extensive reading habits and often recommends books that have shaped his thinking. Here are five essential books that complement and expand upon Naval's philosophy:</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card p-6 rounded-lg shadow-md flex" style="background-color: var(--quote-bg);">
+                    <div class="mr-4 flex-shrink-0">
+                        <i class="fas fa-book text-4xl" style="color: var(--primary);"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">The Almanack of Naval Ravikant</h3>
+                        <p class="text-sm mb-2">By Eric Jorgenson</p>
+                        <p class="serif">A comprehensive collection of Naval's wisdom and philosophy, curated from his various interviews, podcasts, and tweets. This book serves as the definitive guide to Naval's thinking on wealth, happiness, and life.</p>
+                        <a href="https://www.navalmanack.com/" target="_blank" class="inline-block mt-4 text-sm font-medium" style="color: var(--primary);">Read for Free <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <div class="card p-6 rounded-lg shadow-md flex" style="background-color: var(--quote-bg);">
+                    <div class="mr-4 flex-shrink-0">
+                        <i class="fas fa-book text-4xl" style="color: var(--primary);"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Sapiens: A Brief History of Humankind</h3>
+                        <p class="text-sm mb-2">By Yuval Noah Harari</p>
+                        <p class="serif">A book that Naval frequently recommends, offering a sweeping view of human history and the cognitive revolution that shaped our species. It provides context for understanding our current social structures and belief systems.</p>
+                        <a href="https://www.ynharari.com/book/sapiens-2/" target="_blank" class="inline-block mt-4 text-sm font-medium" style="color: var(--primary);">Learn More <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <div class="card p-6 rounded-lg shadow-md flex" style="background-color: var(--quote-bg);">
+                    <div class="mr-4 flex-shrink-0">
+                        <i class="fas fa-book text-4xl" style="color: var(--primary);"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">The Rational Optimist</h3>
+                        <p class="text-sm mb-2">By Matt Ridley</p>
+                        <p class="serif">This book aligns with Naval's positive view of human progress and innovation. It explores how trade and specialization have driven human advancement and why we should be optimistic about the future despite challenges.</p>
+                        <a href="https://www.mattridley.co.uk/books/the-rational-optimist/" target="_blank" class="inline-block mt-4 text-sm font-medium" style="color: var(--primary);">Learn More <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <div class="card p-6 rounded-lg shadow-md flex" style="background-color: var(--quote-bg);">
+                    <div class="mr-4 flex-shrink-0">
+                        <i class="fas fa-book text-4xl" style="color: var(--primary);"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Siddhartha</h3>
+                        <p class="text-sm mb-2">By Hermann Hesse</p>
+                        <p class="serif">A novel that Naval has mentioned as influential to his thinking on happiness and the spiritual journey. It follows the protagonist's quest for enlightenment and self-discovery, themes that resonate with Naval's philosophy.</p>
+                        <a href="https://www.goodreads.com/book/show/52036.Siddhartha" target="_blank" class="inline-block mt-4 text-sm font-medium" style="color: var(--primary);">Learn More <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <div class="card p-6 rounded-lg shadow-md flex" style="background-color: var(--quote-bg);">
+                    <div class="mr-4 flex-shrink-0">
+                        <i class="fas fa-book text-4xl" style="color: var(--primary);"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Poor Charlie's Almanack</h3>
+                        <p class="text-sm mb-2">Edited by Peter D. Kaufman</p>
+                        <p class="serif">A collection of speeches and talks by Charlie Munger, Warren Buffett's business partner. This book explores mental models and decision-making frameworks that align with Naval's emphasis on clear thinking and multidisciplinary knowledge.</p>
+                        <a href="https://www.poorcharliesalmanack.com/" target="_blank" class="inline-block mt-4 text-sm font-medium" style="color: var(--primary);">Learn More <i class="fas fa-external-link-alt ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="max-w-4xl mx-auto mb-20 p-8 rounded-lg" style="background-color: var(--quote-bg);">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold mb-4" style="color: var(--primary);">Stay Updated</h2>
+                <p class="serif text-lg">Join our newsletter to receive the latest insights, articles, and resources on Naval's philosophy and related topics.</p>
+            </div>
+            
+            <form class="max-w-md mx-auto">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg" style="background-color: var(--background); color: var(--text);" required>
+                    <button type="submit" class="btn px-6 py-3 rounded-lg font-medium text-white" style="background-color: var(--primary);">
+                        Subscribe <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </div>
+                <p class="text-sm mt-4 text-center serif">We respect your privacy. Unsubscribe at any time.</p>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12" style="background-color: var(--quote-bg);">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                    <div class="mb-6 md:mb-0">
+                        <a href="#" class="text-2xl font-bold" style="color: var(--primary);">
+                            <i class="fas fa-anchor mr-2"></i>Naval Wisdom
+                        </a>
+                    </div>
+                    
+                    <div class="flex space-x-6">
+                        <a href="#" style="color: var(--primary);"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" style="color: var(--primary);"><i class="fab fa-youtube text-xl"></i></a>
+                        <a href="#" style="color: var(--primary);"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" style="color: var(--primary);"><i class="fab fa-spotify text-xl"></i></a>
+                    </div>
+                </div>
+                
+                <div class="border-t pt-8" style="border-color: var(--accent);">
+                    <div class="grid md:grid-cols-3 gap-8 mb-8">
+                        <div>
+                            <h3 class="text-lg font-bold mb-4" style="color: var(--primary);">Navigation</h3>
+                            <ul class="space-y-2">
+                                <li><a href="#philosophy" style="color: var(--text);">Philosophy</a></li>
+                                <li><a href="#wealth" style="color: var(--text);">Wealth</a></li>
+                                <li><a href="#happiness" style="color: var(--text);">Happiness</a></li>
+                                <li><a href="#concepts" style="color: var(--text);">Key Concepts</a></li>
+                                <li><a href="#reading" style="color: var(--text);">Further Reading</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-bold mb-4" style="color: var(--primary);">Resources</h3>
+                            <ul class="space-y-2">
+                                <li><a href="#" style="color: var(--text);">Naval's Podcast</a></li>
+                                <li><a href="#" style="color: var(--text);">Twitter Wisdom</a></li>
+                                <li><a href="#" style="color: var(--text);">Recommended Books</a></li>
+                                <li><a href="#" style="color: var(--text);">Articles</a></li>
+                                <li><a href="#" style="color: var(--text);">Videos</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-bold mb-4" style="color: var(--primary);">About</h3>
+                            <ul class="space-y-2">
+                                <li><a href="#" style="color: var(--text);">About Naval</a></li>
+                                <li><a href="#" style="color: var(--text);">About This Site</a></li>
+                                <li><a href="#" style="color: var(--text);">Contact</a></li>
+                                <li><a href="#" style="color: var(--text);">Privacy Policy</a></li>
+                                <li><a href="#" style="color: var(--text);">Terms of Service</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center serif">
+                        <p style="color: var(--text);">&copy; 2023 Naval Wisdom. All rights reserved.</p>
+                        <p class="mt-2 text-sm" style="color: var(--text);">This site is dedicated to sharing Naval Ravikant's wisdom and philosophy. It is not affiliated with or endorsed by Naval Ravikant.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
+            securityLevel: 'loose',
+            fontFamily: 'Inter, sans-serif'
+        });
+        
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        
+        // Check system preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            htmlElement.classList.remove('light');
+            htmlElement.classList.add('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                htmlElement.classList.add('light');
+                mermaid.initialize({
+                    startOnLoad: true,
+                    theme: 'default',
+                    securityLevel: 'loose',
+                    fontFamily: 'Inter, sans-serif'
+                });
+            } else {
+                htmlElement.classList.remove('light');
+                htmlElement.classList.add('dark');
+                mermaid.initialize({
+                    startOnLoad: true,
+                    theme: 'dark',
+                    securityLevel: 'loose',
+                    fontFamily: 'Inter, sans-serif'
+                });
+            }
+            
+            // Re-render mermaid diagrams
+            mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Fade-in Animation for Elements
+        const fadeElements = document.querySelectorAll('.card, .timeline-item');
+        
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    fadeInObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+    </script>
+</body>
+</html>
